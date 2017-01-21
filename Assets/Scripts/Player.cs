@@ -6,9 +6,7 @@ public class Player : MonoBehaviour {
 
 	public float health; //has to be a relitivly high num, cuz damage in done per frame touching
 
-	public bool waveGun;
-	public bool beamGun;
-	public bool weirdGun;
+
 
 
 	void Start () {
