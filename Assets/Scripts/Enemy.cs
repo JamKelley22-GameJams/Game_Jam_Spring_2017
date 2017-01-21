@@ -16,7 +16,8 @@ public class Enemy : MonoBehaviour {
 
 	private Vector3 moveDir;
 
-	public static bool playerAlive = true; //Want other classes to know when player is dead, specifically Enemy class (state is decided in Player)
+	public float amplitude;
+	public float frequency;
 
 
 	void Awake() {// IDK what awake does but it was in the tutoral lol
@@ -30,6 +31,8 @@ public class Enemy : MonoBehaviour {
 	void Update () {
 
 		moveToPlayer ();
+
+		this.transform.position = new Vector3(transform.position.x,transform.position.y + amplitude * Mathf.Sin(frequency * Time.time),transform.position.z);
 	}
 
 	void OnTriggerStay2D(Collider2D other) { //This will do ticks of damage every frame, however it stops until the player moves again at about 20 frames
@@ -52,8 +55,8 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void moveToPlayer() { //Spent forever on this only to find a function that was easy 
-		if(playerAlive == true) {
-			transform.position = Vector3.MoveTowards (transform.position,player.transform.position,moveSpeed * Time.deltaTime);
+		if(Global.playerAlive == true) {
+			this.transform.position = Vector3.MoveTowards (transform.position,player.transform.position,moveSpeed * Time.deltaTime);
 
 		}
 	}

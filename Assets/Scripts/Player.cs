@@ -19,7 +19,7 @@ public class Player : MonoBehaviour {
 		if(health < 0) {
 			Destroy (this.gameObject);
 			Debug.Log ("KFZoo creatures ate you :(");
-			//playerAlive = false; //Idk how to do global vars
+			Global.playerAlive = false; //Idk how to do global vars
 		}
 
 	}
