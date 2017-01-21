@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour {
 
 		moveToPlayer ();
 
-		this.transform.position = new Vector3(transform.position.x,transform.position.y + amplitude * Mathf.Sin(frequency * Time.time),transform.position.z);
+		this.transform.position = new Vector3(this.transform.position.x,this.transform.position.y + amplitude * Mathf.Sin(frequency * Time.time),this.transform.position.z);
 	}
 
 	void OnTriggerStay2D(Collider2D other) { //This will do ticks of damage every frame, however it stops until the player moves again at about 20 frames
@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void takeDamage(int damage) {//death, damage, pain
+		
 		health -= damage;
 		if(health <= 0) {
 			die();
