@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour {
 	public float posY;
 	public float cumPosX = 0, cumPosY = 0;
 	public float damage;
+	public GameObject doorEnter;
+	public GameObject doorExit;
 
 	Transform player;
 
@@ -52,6 +54,8 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void die() {// :(
+		doorEnter.GetComponent<Door>().doorDeath();
+		doorExit.GetComponent<Door>().doorDeath();
 		Destroy (this.gameObject);
 	}
 

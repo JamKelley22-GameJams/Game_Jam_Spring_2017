@@ -52,7 +52,7 @@ public class Movement : MonoBehaviour {
 		this.gameObject.transform.position = new Vector2 (cumPosX,cumPosY);
 		
 	}
-	void changeRoomNum(int num) {
+	public void changeRoomNum(int num) {
 		roomNum = num;
 	}
 }
