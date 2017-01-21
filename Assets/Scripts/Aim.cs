@@ -9,6 +9,7 @@ public class Aim : MonoBehaviour {
 	public float mouseValue;
 	public int maxX;
 	public int maxY;
+	public Vector3 mousePos2;
 
 	public GameObject bullet;
 	private GameObject tempBullet;
@@ -25,6 +26,10 @@ public class Aim : MonoBehaviour {
 			shoot ();
 		}
 
+		//mousePos =  ScreenToWorldPoint(Input.mousePosition);
+
+
+		///*
 		mousePos = new Vector2(Input.mousePosition.x - 210, Input.mousePosition.y - 150);
 
 		if (mousePos.x > maxX) {
@@ -48,6 +53,7 @@ public class Aim : MonoBehaviour {
 			GetComponent<SpriteRenderer> ().flipX = false;
 			this.gameObject.transform.eulerAngles = new Vector3(0, 0, this.gameObject.transform.rotation.eulerAngles.x);
 		}
+		//*/
 	}
 
 	private void shoot (){
