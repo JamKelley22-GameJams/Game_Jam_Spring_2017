@@ -19,4 +19,11 @@ public class Bullet : MonoBehaviour {
 			this.gameObject.transform.position.x + direction.x * speed,
 			this.gameObject.transform.position.y + direction.y * speed, 0);
 	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if(other.gameObject.tag.Equals("Enemy")) {
+			other.gameObject.GetComponent<Enemy> ().takeDamage (damage);
+		}
+		Destroy (this.gameObject);
+	}
 }
