@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class Aim : MonoBehaviour {
 
-	public Vector2 mousePos; //variable for the mouse position
+	public Vector3 mousePos; //variable for the mouse position
 	public GameObject emptyMouse;
-	public float mouseValue;
-	public int maxX;
-	public int maxY;
-	public Vector3 mousePos2;
 
 	public GameObject bullet;
 	private GameObject tempBullet;
 
+	private float xScale;
+
 	// Use this for initialization
 	void Start () {
-		mousePos = new Vector2 (0, 0);
+		mousePos = new Vector3 (0, 0, 0);
 		Cursor.visible = false;
+		xScale = this.gameObject.transform.localScale.x;
 	}
 	
 	// Update is called once per frame
@@ -25,35 +24,19 @@ public class Aim : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			shoot ();
 		}
+			
+		mousePos =  Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, 10.0f));
 
-		//mousePos =  ScreenToWorldPoint(Input.mousePosition);
-
-
-		///*
-		mousePos = new Vector2(Input.mousePosition.x - 210, Input.mousePosition.y - 150);
-
-		if (mousePos.x > maxX) {
-			mousePos = new Vector2 (maxX, mousePos.y);
-		} else if (mousePos.x < -maxX) {
-			mousePos = new Vector2 (-maxX, mousePos.y);
-		}
-		if (mousePos.y > maxY) {
-			mousePos = new Vector2 (mousePos.x, maxY);
-		} else if (mousePos.y < -maxY) {
-			mousePos = new Vector2 (mousePos.x, -maxY);
-		}
-
-		emptyMouse.transform.position = new Vector3 (mousePos.x / mouseValue, mousePos.y / mouseValue, 0);
+		emptyMouse.transform.position = mousePos;
 		this.gameObject.transform.LookAt (emptyMouse.transform.position);
 
-		if (mousePos.x > 0) {
-			GetComponent<SpriteRenderer> ().flipX = true;
+		if (mousePos.x > this.gameObject.transform.position.x) {
+			this.transform.localScale = new Vector3 (-xScale, this.gameObject.transform.localScale.y, 1);
 			this.gameObject.transform.eulerAngles = new Vector3(0, 0, -this.gameObject.transform.rotation.eulerAngles.x);
 		} else {
-			GetComponent<SpriteRenderer> ().flipX = false;
+			this.transform.localScale = new Vector3 (xScale, this.gameObject.transform.localScale.y, 1);
 			this.gameObject.transform.eulerAngles = new Vector3(0, 0, this.gameObject.transform.rotation.eulerAngles.x);
 		}
-		//*/
 	}
 
 	private void shoot (){

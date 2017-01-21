@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-			direction = GameObject.Find("Player").GetComponent<Aim> ().getDirection ();
+			direction = GameObject.Find("Gun").GetComponent<Aim> ().getDirection ();
 	}
 	
 	// Update is called once per frame
