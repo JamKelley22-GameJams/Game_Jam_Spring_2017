@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour {
 	float[][] roomMaxMin;
 
 	void Start() {
+			//Room sizes will replace maxPos
 			roomMaxMin = new float[][] {
 			new float[]{maxPos,-maxPos},
 			new float[]{maxPos,-maxPos},

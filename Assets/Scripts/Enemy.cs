@@ -10,13 +10,16 @@ public class Enemy : MonoBehaviour {
 	public float posX;
 	public float posY;
 	public float cumPosX = 0, cumPosY = 0;
+	public float damage;
 
 	Transform player;
 
 	private Vector3 moveDir;
 
+	public static bool playerAlive = true; //Want other classes to know when player is dead, specifically Enemy class (state is decided in Player)
 
-	void Awake() {
+
+	void Awake() {// IDK what awake does but it was in the tutoral lol
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
 	// Use this for initialization
@@ -29,36 +32,30 @@ public class Enemy : MonoBehaviour {
 		moveToPlayer ();
 	}
 
-	public void takeDamage(int damage) {
+	void OnTriggerStay2D(Collider2D other) { //This will do ticks of damage every frame, however it stops until the player moves again at about 20 frames
+		//Debug.Log (other);
+		if(other.gameObject.tag.Equals("Player")) {
+			other.gameObject.GetComponent<Player> ().takeDamage (damage);
+		}
+		//Destroy (this.gameObject);
+	}
+
+	public void takeDamage(int damage) {//death, damage, pain
 		health -= damage;
 		if(health <= 0) {
 			die();
 		}
 	}
 
-	void die() {
+	void die() {// :(
 		Destroy (this.gameObject);
 	}
 
-	public void moveToPlayer() {
+	public void moveToPlayer() { //Spent forever on this only to find a function that was easy 
+		if(playerAlive == true) {
+			transform.position = Vector3.MoveTowards (transform.position,player.transform.position,moveSpeed * Time.deltaTime);
 
-		transform.position = Vector3.MoveTowards (transform.position,player.transform.position,moveSpeed * Time.deltaTime);
-
-		/*
-
-		posX = Time.deltaTime * moveSpeed;
-		posY = Time.deltaTime * moveSpeed;
-
-		cumPosX = this.gameObject.transform.position.x + posX;
-		cumPosY = this.gameObject.transform.position.y + posY; 
-		//moveDir = player.position - this.gameObject.transform.position;
-		moveDir = new Vector3 (cumPosX,cumPosY,0);
-		//this.gameObject.transform.LookAt (player.transform.position,Vector3.left);
-
-		this.gameObject.transform.position = moveDir;
-		*/
-
-
+		}
 	}
 }
 

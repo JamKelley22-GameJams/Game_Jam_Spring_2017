@@ -12,14 +12,12 @@ public class Aim : MonoBehaviour {
 
 	private float xScale;
 
-	// Use this for initialization
 	void Start () {
 		mousePos = new Vector3 (0, 0, 0);
 		Cursor.visible = false;
 		xScale = this.gameObject.transform.localScale.x;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 			shoot ();
