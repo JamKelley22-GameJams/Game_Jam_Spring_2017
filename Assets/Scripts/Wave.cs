@@ -17,6 +17,8 @@ public class Wave : MonoBehaviour {
 
 	public bool decay;
 
+	public GameObject glow;
+
 	void Start () {
 		direction = GameObject.Find("Gun").GetComponent<Aim> ().getDirection ();
 		hasHit = false;
@@ -33,6 +35,8 @@ public class Wave : MonoBehaviour {
 		if (hasHit == true) {
 			this.gameObject.GetComponent<SpriteRenderer> ().color = new Color 
 				(1, 1, 1, this.gameObject.GetComponent<SpriteRenderer> ().color.a - fadeSpeed);
+			glow.GetComponent<SpriteRenderer> ().color = new Color 
+				(1, 1, 1, glow.GetComponent<SpriteRenderer> ().color.a - fadeSpeed / 3);
 		}
 		if (this.gameObject.GetComponent<SpriteRenderer> ().color.a <= 0 + fadeSpeed || damage <= 0) {
 			Destroy (this.gameObject);
