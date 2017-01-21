@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour {
 	public float maxPos = 100;
 	public bool smoothMovement = false;
 	int roomNum = 0;
-	float[][] roomMaxMin;
+	public float[][] roomMaxMin;
 
 	void Start() {
 			//Room sizes will replace maxPos
