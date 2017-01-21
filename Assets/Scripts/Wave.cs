@@ -18,6 +18,7 @@ public class Wave : MonoBehaviour {
 	public bool decay;
 
 	public GameObject glow;
+	public int decayPerTic;
 
 	void Start () {
 		direction = GameObject.Find("Gun").GetComponent<Aim> ().getDirection ();
@@ -43,7 +44,7 @@ public class Wave : MonoBehaviour {
 		}
 
 		if (decay == true) {
-			damage--;
+			damage-= decayPerTic;
 		}
 
 		this.gameObject.transform.localScale = new Vector3 (
