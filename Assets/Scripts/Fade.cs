@@ -17,6 +17,9 @@ public class Fade : MonoBehaviour {
 		if(isFading) {
 			this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1,1,1,this.gameObject.GetComponent<SpriteRenderer>().color.a - fadeSpeed);
 		}
+		if(this.gameObject.GetComponent<SpriteRenderer>().color.a == 0) {
+			isFading = false;
+		}
 	}
 
 	public void fade() {

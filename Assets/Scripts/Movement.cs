@@ -7,18 +7,20 @@ public class Movement : MonoBehaviour {
 	private float posX = 0, posY = 0;
 	public float cumPosX = 0, cumPosY = 0;
 	public float maxPos = 100;
+	public float roomOffset = 50;//The distance of max room pos to the actual side of room
 	public bool smoothMovement = false;
 	int roomNum = 0;
-	public float[][] roomMaxMin;
+	float[][] roomMaxMin;
 
 	void Start() {
 			//Room sizes will replace maxPos
+			//{maxY,minY,maxxX,minX}
 			roomMaxMin = new float[][] {
-			new float[]{maxPos,-maxPos},
-			new float[]{maxPos,-maxPos},
-			new float[]{maxPos,-maxPos},
-			new float[]{maxPos,-maxPos},
-			new float[]{maxPos,-maxPos}};
+			new float[]{maxPos,-maxPos, maxPos,-maxPos},
+			new float[]{roomOffset + 3 * maxPos,maxPos + roomOffset, maxPos,-maxPos},
+			new float[]{2 * roomOffset + 5 * maxPos, 2 * roomOffset + 3 * maxPos, 4*maxPos, -maxPos},
+			new float[]{ 2 * roomOffset + 8 * maxPos, 2 * roomOffset + 3 * maxPos,8*maxPos+1*roomOffset,4*maxPos+1*roomOffset},
+			new float[]{6*maxPos+1*roomOffset, 8*maxPos+1*roomOffset, 2 * roomOffset + 3 * maxPos, 4*maxPos, -maxPos}};
 	}
 	void Update()
 	{
@@ -52,7 +54,7 @@ public class Movement : MonoBehaviour {
 		this.gameObject.transform.position = new Vector2 (cumPosX,cumPosY);
 		
 	}
-	void changeRoomNum(int num) {
+	public void changeRoomNum(int num) {
 		roomNum = num;
 	}
 }
