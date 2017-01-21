@@ -7,8 +7,8 @@ public class Movement : MonoBehaviour {
 	private float posX = 0, posY = 0;
 	public float cumPosX = 0, cumPosY = 0;
 	public float maxPos = 100;
-
-	public int roomNum = 0;
+	public bool smoothMovement = false;
+	int roomNum = 0;
 	float[][] roomMaxMin;
 
 	void Start() {
@@ -21,8 +21,15 @@ public class Movement : MonoBehaviour {
 	}
 	void Update()
 	{
-		posX = Input.GetAxisRaw("Horizontal") * Time.deltaTime * moveSpeed;
-		posY = Input.GetAxisRaw("Vertical") * Time.deltaTime * moveSpeed;
+		if(smoothMovement) {
+			posX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+			posY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+		}
+		else {
+			posX = Input.GetAxisRaw("Horizontal") * Time.deltaTime * moveSpeed;
+			posY = Input.GetAxisRaw("Vertical") * Time.deltaTime * moveSpeed;
+		}
+		
 		cumPosX = this.gameObject.transform.position.x + posX;
 		cumPosY = this.gameObject.transform.position.y + posY; 
 
