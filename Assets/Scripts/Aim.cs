@@ -12,15 +12,25 @@ public class Aim : MonoBehaviour {
 
 	private float xScale;
 
+	public float shootDelay;
+	private bool hasShot;
+	private float shotStamp;
+
 	void Start () {
 		mousePos = new Vector3 (0, 0, 0);
 		Cursor.visible = false;
 		xScale = this.gameObject.transform.localScale.x;
+		hasShot = false;
 	}
 
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButton (0) && Time.time - shotStamp > shootDelay) {
 			shoot ();
+			hasShot = true;
+		}
+		if (hasShot == true) {
+			shotStamp = Time.time;
+			hasShot = false;
 		}
 			
 		mousePos =  Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, 10.0f));
