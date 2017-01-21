@@ -44,8 +44,8 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void takeDamage(int damage) {//death, damage, pain
-		
 		health -= damage;
+		this.gameObject.GetComponentInChildren<Fade>().fade();
 		if(health <= 0) {
 			die();
 		}
