@@ -23,7 +23,6 @@ public class Door : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (player.gameObject.GetComponent<Movement>().getRoomNum());
 		if (inDoor == true)  {
 			Camera.main.transform.position = new Vector3 (
 				Camera.main.transform.position.x + direction.x * distance,

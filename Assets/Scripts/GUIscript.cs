@@ -23,6 +23,12 @@ public class GUIscript : MonoBehaviour {
 			maxHP = this.gameObject.GetComponent<Player> ().getHealth ();
 		} else if (this.gameObject.tag.Equals ("Enemy")) {
 			maxHP = this.gameObject.GetComponent<Enemy> ().getHealth ();
+		} else if (this.gameObject.tag.Equals ("Alpaca")) {
+			maxHP = this.gameObject.GetComponent<Alpaca> ().getHealth ();
+		} else if (this.gameObject.tag.Equals ("Boss")) {
+			maxHP = this.gameObject.GetComponent<Boss> ().getHealth ();
+		} else if (this.gameObject.tag.Equals ("Slime")) {
+			maxHP = this.gameObject.GetComponent<Slime> ().getHealth ();
 		}
 	}
 	
@@ -32,6 +38,12 @@ public class GUIscript : MonoBehaviour {
 			HP = this.gameObject.GetComponent<Player> ().getHealth ();
 		} else if (this.gameObject.tag.Equals ("Enemy")) {
 			HP = this.gameObject.GetComponent<Enemy> ().getHealth ();
+		} else if (this.gameObject.tag.Equals ("Alpaca")) {
+			HP = this.gameObject.GetComponent<Alpaca> ().getHealth ();
+		} else if (this.gameObject.tag.Equals ("Boss")) {
+			HP = this.gameObject.GetComponent<Boss> ().getHealth ();
+		} else if (this.gameObject.tag.Equals ("Slime")) {
+			HP = this.gameObject.GetComponent<Slime> ().getHealth ();
 		}
 		if (takingDamage == false) {
 			showStamp = Time.time;

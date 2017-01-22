@@ -75,9 +75,24 @@ public class Wave : MonoBehaviour {
 		if(other.gameObject.tag.Equals("Enemy") && hasHit == false && !isBeam) {
 			hasHit = true;
 			other.gameObject.GetComponent<Enemy> ().takeDamage (damage);
+		} else if(other.gameObject.tag.Equals("Alpaca") && hasHit == false && !isBeam) {
+			hasHit = true;
+			other.gameObject.GetComponent<Alpaca> ().takeDamage (damage);
+		} else if(other.gameObject.tag.Equals("Boss") && hasHit == false && !isBeam) {
+			hasHit = true;
+			other.gameObject.GetComponent<Boss> ().takeDamage (damage);
+		} else if(other.gameObject.tag.Equals("Slime") && hasHit == false && !isBeam) {
+			hasHit = true;
+			other.gameObject.GetComponent<Slime> ().takeDamage (damage);
 		}
 		if(other.gameObject.tag.Equals("Enemy") && isBeam) {
 			other.gameObject.GetComponent<Enemy> ().takeDamage (damage);
+		} else if(other.gameObject.tag.Equals("Alpaca") && isBeam) {
+			other.gameObject.GetComponent<Alpaca> ().takeDamage (damage);
+		} else if(other.gameObject.tag.Equals("Boss") && isBeam) {
+			other.gameObject.GetComponent<Boss> ().takeDamage (damage);
+		} else if(other.gameObject.tag.Equals("Slime") && isBeam) {
+			other.gameObject.GetComponent<Slime> ().takeDamage (damage);
 		}
 	}
 }

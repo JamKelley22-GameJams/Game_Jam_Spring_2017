@@ -6,22 +6,26 @@ public class Bullet : MonoBehaviour {
 
 	public int damage;
 	public float speed;
-	private Vector2 direction;
+	public Vector2 direction;
 
 	void Start () {
-			direction = GameObject.Find("Gun").GetComponent<Aim> ().getDirection ();
 	}
 
 	void Update () {
-		this.gameObject.transform.position = new Vector3 (
-			this.gameObject.transform.position.x + direction.x * speed,
-			this.gameObject.transform.position.y + direction.y * speed, 0);
+			this.gameObject.transform.position = new Vector3 (
+				this.gameObject.transform.position.x + direction.x * speed,
+				this.gameObject.transform.position.y + direction.y * speed, 0);
+	}
+
+	public void setDirection(Vector2 dir){
+		direction = dir;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if(other.gameObject.tag.Equals("Enemy")) {
-			other.gameObject.GetComponent<Enemy> ().takeDamage (damage);
+		if(other.gameObject.tag.Equals("Player")) {
+			other.gameObject.GetComponent<Player> ().takeDamage (damage);
+			Destroy (this.gameObject);
 		}
-		Destroy (this.gameObject);
+
 	}
 }
