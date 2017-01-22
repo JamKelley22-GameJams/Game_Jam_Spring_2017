@@ -21,6 +21,8 @@ public class Wave : MonoBehaviour {
 	public int decayPerTic;
 	public int maxDmg;
 
+	public bool isBeam = false;
+
 	public float sizeMultiplier;
 
 	void Start () {
@@ -29,6 +31,7 @@ public class Wave : MonoBehaviour {
 		}
 		else if (this.gameObject.tag.Equals("Beam")) {
 			direction = GameObject.Find("Beam Gun").GetComponent<Aim> ().getDirection ();
+			isBeam = true;
 		}
 		else if (this.gameObject.tag.Equals("Weird")) {
 			direction = GameObject.Find("Weird Gun").GetComponent<Aim> ().getDirection ();
@@ -44,7 +47,7 @@ public class Wave : MonoBehaviour {
 	}
 
 	void Update () {
-		if (hasHit == true) {
+		if (hasHit == true && !isBeam) {
 			this.gameObject.GetComponent<SpriteRenderer> ().color = new Color 
 				(1, 1, 1, this.gameObject.GetComponent<SpriteRenderer> ().color.a - fadeSpeed);
 			glow.GetComponent<SpriteRenderer> ().color = new Color 
@@ -71,8 +74,11 @@ public class Wave : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D other) {
-		if(other.gameObject.tag.Equals("Enemy") && hasHit == false) {
+		if(other.gameObject.tag.Equals("Enemy") && hasHit == false && !isBeam) {
 			hasHit = true;
+			other.gameObject.GetComponent<Enemy> ().takeDamage (damage);
+		}
+		if(other.gameObject.tag.Equals("Enemy") && isBeam) {
 			other.gameObject.GetComponent<Enemy> ().takeDamage (damage);
 		}
 	}
