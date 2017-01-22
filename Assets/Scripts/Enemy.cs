@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D other) { //This will do ticks of damage every frame, however it stops until the player moves again at about 20 frames
 		//Debug.Log (other);
 		if(other.gameObject.tag.Equals("Player")) {
-			other.gameObject.GetComponent<Player> ().takeDamage (damage);
+			other.gameObject.GetComponent<Player> ().takeDamage(damage);
 		}
 		//Destroy (this.gameObject);
 	}

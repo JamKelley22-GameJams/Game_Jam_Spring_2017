@@ -21,7 +21,15 @@ public class Wave : MonoBehaviour {
 	public int decayPerTic;
 
 	void Start () {
-		direction = GameObject.Find("Gun").GetComponent<Aim> ().getDirection ();
+		if (this.gameObject.tag.Equals("Wave")) {
+			direction = GameObject.Find("Wave Gun").GetComponent<Aim> ().getDirection ();
+		}
+		else if (this.gameObject.tag.Equals("Beam")) {
+			direction = GameObject.Find("Beam Gun").GetComponent<Aim> ().getDirection ();
+		}
+		else if (this.gameObject.tag.Equals("Weird")) {
+			direction = GameObject.Find("Weird Gun").GetComponent<Aim> ().getDirection ();
+		}
 		hasHit = false;
 		this.gameObject.transform.LookAt (GameObject.Find("Cursor").transform);
 		angle = this.gameObject.transform.rotation.eulerAngles.x;
