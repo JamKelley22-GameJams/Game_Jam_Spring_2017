@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour {
 	int roomNum = 0;
 	float[][] roomMaxMin;
 
-	void Start() {
+	void Awake() {
 			//Room sizes will replace maxPos
 			//{maxY,minY,maxxX,minX}
 			roomMaxMin = new float[][] {
@@ -56,5 +56,13 @@ public class Movement : MonoBehaviour {
 	}
 	public void changeRoomNum(int num) {
 		roomNum = num;
+	}
+
+	public float[] getRoomMinMax(){
+		float[] temp = new float[4];
+		for (int i = 0; i < 4; i++) {
+			temp [i] = roomMaxMin [roomNum] [i];
+		}
+		return temp;
 	}
 }
