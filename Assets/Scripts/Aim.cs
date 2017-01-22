@@ -27,15 +27,15 @@ public class Aim : MonoBehaviour {
 	public AudioClip shootSound;
 	private AudioSource source;
 
-	void Awake() {
-		source = GetComponent<AudioSource>();
-	}
+
 
 	void Start () {
 		mousePos = new Vector3 (0, 0, 0);
 		Cursor.visible = false;
 		xScale = this.gameObject.transform.localScale.x;
 		hasShot = false;
+
+		source = GetComponent<AudioSource>();
 	}
 
 	void Update () {
@@ -84,7 +84,7 @@ public class Aim : MonoBehaviour {
 
 	private void shoot (){
 		tempBullet = Instantiate (bullet, this.gameObject.transform.position, Quaternion.identity);
-		source.PlayOneShot(shootSound,.5f);
+		source.PlayOneShot(shootSound);
 		Destroy (tempBullet, 3);
 	}
 

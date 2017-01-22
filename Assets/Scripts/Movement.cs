@@ -57,6 +57,9 @@ public class Movement : MonoBehaviour {
 	public void changeRoomNum(int num) {
 		roomNum = num;
 	}
+	public int getRoomNum() {
+		return roomNum;
+	}
 
 	public float[] getRoomMinMax(){
 		float[] temp = new float[4];
