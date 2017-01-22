@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour {
 			new float[]{maxPos,-maxPos, maxPos,-maxPos},
 			new float[]{roomOffset + 3 * maxPos,maxPos + roomOffset, maxPos,-maxPos},
 			new float[]{2 * roomOffset + 5 * maxPos, 2 * roomOffset + 3 * maxPos, 4*maxPos, -maxPos},
-			new float[]{ 2 * roomOffset + 8 * maxPos, 2 * roomOffset + 3 * maxPos,8*maxPos+1*roomOffset,4*maxPos+1*roomOffset},
+			new float[]{ 2 * roomOffset + 8 * maxPos, 2 * roomOffset + 3 * maxPos,9*maxPos+1*roomOffset,4*maxPos+1*roomOffset},
 			new float[]{6*maxPos+1*roomOffset, 8*maxPos+1*roomOffset, 2 * roomOffset + 3 * maxPos, 4*maxPos, -maxPos}};
 	}
 	void Update()
