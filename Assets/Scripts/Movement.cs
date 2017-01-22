@@ -36,11 +36,11 @@ public class Movement : MonoBehaviour {
 		cumPosX = this.gameObject.transform.position.x + posX;
 		cumPosY = this.gameObject.transform.position.y + posY; 
 
-		if(cumPosX > roomMaxMin[roomNum][0]) {
-			cumPosX = roomMaxMin[roomNum][0];
+		if(cumPosX > roomMaxMin[roomNum][2]) {
+			cumPosX = roomMaxMin[roomNum][2];
 		}
-		if(cumPosX < roomMaxMin[roomNum][1]) {
-			cumPosX = roomMaxMin[roomNum][1];
+		if(cumPosX < roomMaxMin[roomNum][3]) {
+			cumPosX = roomMaxMin[roomNum][3];
 		}
 
 		if(cumPosY > roomMaxMin[roomNum][0]) {

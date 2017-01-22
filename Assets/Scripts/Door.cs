@@ -13,6 +13,7 @@ public class Door : MonoBehaviour {
 	public Sprite open;
 	public Sprite closed;
 	public int nextRoomNum;
+	public GameObject enemies;
 
 	// Use this for initialization
 	void Start () {
@@ -31,9 +32,10 @@ public class Door : MonoBehaviour {
 				player.transform.position.y + direction.y * playerDistance,
 				player.transform.position.z);
 			player.GetComponent<Movement> ().changeRoomNum (nextRoomNum);
+			enemies.SetActive (true);
 			inDoor = false;
 		}
-		if (enemyNum == 0) {
+		if (enemyNum <= 0) {
 			this.gameObject.GetComponent<SpriteRenderer> ().sprite = open;
 		} else {
 			this.gameObject.GetComponent<SpriteRenderer> ().sprite = closed;
@@ -45,7 +47,7 @@ public class Door : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D other){
-		if (enemyNum == 0 && other.gameObject.tag.Equals("Player")) {
+		if (enemyNum <= 0 && other.gameObject.tag.Equals("Player")) {
 			inDoor = true;
 		}
 	}
