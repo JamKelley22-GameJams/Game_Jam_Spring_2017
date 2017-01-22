@@ -5,7 +5,7 @@ using System.Collections;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
-	public int health;
+	public float health;
 	public float moveSpeed;
 	public float posX;
 	public float posY;
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour {
 		//Destroy (this.gameObject);
 	}
 
-	public void takeDamage(int damage) {//death, damage, pain
+	public void takeDamage(float damage) {//death, damage, pain
 		health -= damage;
 		this.gameObject.GetComponentInChildren<Fade>().fade();
 		this.gameObject.GetComponent<GUIscript> ().takeDamage ();
@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	public int getHealth(){
+	public float getHealth(){
 		return health;
 	}
 }

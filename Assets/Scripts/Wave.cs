@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour {
 
-	public int damage;
+	public float damage;
 	public float speed;
 	private Vector2 direction;
 
@@ -19,7 +19,9 @@ public class Wave : MonoBehaviour {
 
 	public GameObject glow;
 	public int decayPerTic;
-	public maxDmg;
+	public int maxDmg;
+
+	public float sizeMultiplier;
 
 	void Start () {
 		if (this.gameObject.tag.Equals("Wave")) {
@@ -57,11 +59,14 @@ public class Wave : MonoBehaviour {
 			damage-= decayPerTic;
 		}
 
-		/*
+	
 		if (decay == true) {
-			damage = ;
+			if(this.gameObject.transform.localScale.x * sizeMultiplier < 1 && this.gameObject.transform.localScale.x * sizeMultiplier> -1) {// 1 because of division
+				damage = maxDmg;
+			}
+			damage = maxDmg / this.gameObject.transform.localScale.x * sizeMultiplier;
 		}
-		*/
+
 
 		this.gameObject.transform.localScale = new Vector3 (
 			this.gameObject.transform.localScale.x + growSpeed,
