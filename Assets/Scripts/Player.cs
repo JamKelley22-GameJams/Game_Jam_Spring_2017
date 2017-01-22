@@ -90,6 +90,7 @@ public class Player : MonoBehaviour {
 	public void takeDamage(float damage) {//argggggggghhhhhhh
 		health -= damage;
 		this.gameObject.GetComponentInChildren<Fade>().fade();
+		this.gameObject.GetComponent<GUIscript> ().takeDamage ();
 		if(health < 0) {
 			Destroy (this.gameObject);
 			Debug.Log ("KFZoo creatures ate you :(");

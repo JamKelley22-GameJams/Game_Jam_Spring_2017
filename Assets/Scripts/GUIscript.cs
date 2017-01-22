@@ -11,6 +11,7 @@ public class GUIscript : MonoBehaviour {
 	public float xSize;
 	public float ySize;
 	public Texture image;
+	public float xOffset;
 	public float yOffset;
 
 	private float maxHP;
@@ -51,9 +52,9 @@ public class GUIscript : MonoBehaviour {
 		if (showBar) {
 			GUI.DrawTexture (new Rect (
 				new Vector2(Camera.main.WorldToScreenPoint (new Vector3(this.gameObject.transform.position.x,
-					this.gameObject.transform.position.y + yOffset, this.gameObject.transform.position.z)).x,
-					Camera.main.WorldToScreenPoint(new Vector3(this.gameObject.transform.position.x,
-						this.gameObject.transform.position.y + yOffset, this.gameObject.transform.position.z)).y),
+					this.gameObject.transform.position.y, this.gameObject.transform.position.z)).x + xOffset,
+					Screen.height - Camera.main.WorldToScreenPoint(new Vector3(this.gameObject.transform.position.x,
+						this.gameObject.transform.position.y, this.gameObject.transform.position.z)).y + yOffset),
 				new Vector2 (xSize * HP / maxHP, ySize)), image);
 		}
 	}
