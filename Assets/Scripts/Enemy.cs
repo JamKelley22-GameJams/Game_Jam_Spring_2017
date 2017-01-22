@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour {
 	public void takeDamage(int damage) {//death, damage, pain
 		health -= damage;
 		this.gameObject.GetComponentInChildren<Fade>().fade();
+		this.gameObject.GetComponent<GUIscript> ().takeDamage ();
 		if(health <= 0) {
 			die();
 		}
@@ -64,6 +65,10 @@ public class Enemy : MonoBehaviour {
 			this.transform.position = Vector3.MoveTowards (transform.position,player.transform.position,moveSpeed * Time.deltaTime);
 
 		}
+	}
+
+	public int getHealth(){
+		return health;
 	}
 }
 

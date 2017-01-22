@@ -113,4 +113,8 @@ public class Player : MonoBehaviour {
 	
 	}
 
+	public float getHealth(){
+		return health;
+	}
+
 }
