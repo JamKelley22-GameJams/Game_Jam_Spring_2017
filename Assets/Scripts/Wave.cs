@@ -55,18 +55,12 @@ public class Wave : MonoBehaviour {
 		}
 
 
-		if (decay == true) {
-			damage-= decayPerTic;
-		}
-
 	
-		if (decay == true) {
-			if(this.gameObject.transform.localScale.x * sizeMultiplier < 1 && this.gameObject.transform.localScale.x * sizeMultiplier> -1) {// 1 because of division
-				damage = maxDmg;
-			}
+		if (this.gameObject.transform.localScale.x * sizeMultiplier < 1 && this.gameObject.transform.localScale.x * sizeMultiplier > -1) {// 1 because of division
+			damage = maxDmg;
+		} else {
 			damage = maxDmg / this.gameObject.transform.localScale.x * sizeMultiplier;
 		}
-
 
 		this.gameObject.transform.localScale = new Vector3 (
 			this.gameObject.transform.localScale.x + growSpeed,
