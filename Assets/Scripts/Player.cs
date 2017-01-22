@@ -18,6 +18,10 @@ public class Player : MonoBehaviour {
 	public GameObject beamGunS;
 	public GameObject weirdGunS;
 
+	public GameObject waveGunS2;
+	public GameObject beamGunS2;
+	public GameObject weirdGunS2;
+
 	public GameObject pickUpWeapon;
 
 	public bool inSpace = false;
@@ -29,6 +33,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update () {
+		
 		if(Input.GetMouseButtonDown(1) && inSpace) {
 			if(otherTag.Equals("Beam_Gun")) {
 				Debug.Log ("Found Beam Gun");
@@ -84,6 +89,8 @@ public class Player : MonoBehaviour {
 				hasWaveGun = false;
 				hasWeirdGun = true;
 			}
+
+
 		}
 	}
 
