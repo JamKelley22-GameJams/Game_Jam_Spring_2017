@@ -12,18 +12,16 @@ public class Wave : MonoBehaviour {
 	private bool hasHit;
 
 	public float growSpeed;
-
 	private float angle;
-
 	public bool decay;
 
 	public GameObject glow;
 	public int decayPerTic;
 	public int maxDmg;
-
 	public bool isBeam = false;
-
 	public float sizeMultiplier;
+
+
 
 	void Start () {
 		if (this.gameObject.tag.Equals("Wave")) {
