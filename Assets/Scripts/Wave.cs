@@ -19,6 +19,7 @@ public class Wave : MonoBehaviour {
 
 	public GameObject glow;
 	public int decayPerTic;
+	public maxDmg;
 
 	void Start () {
 		if (this.gameObject.tag.Equals("Wave")) {
@@ -51,9 +52,16 @@ public class Wave : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 
+
 		if (decay == true) {
 			damage-= decayPerTic;
 		}
+
+		/*
+		if (decay == true) {
+			damage = ;
+		}
+		*/
 
 		this.gameObject.transform.localScale = new Vector3 (
 			this.gameObject.transform.localScale.x + growSpeed,
