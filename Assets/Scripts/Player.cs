@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
 	private string otherTag;
 
 	void Start () {
-		
+		Screen.SetResolution (768,768,false);
 	}
 
 	void Update () {
